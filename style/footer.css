@@ -1,0 +1,38 @@
+@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;500&display=swap");
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    max-width: 1170px;
+    background-color: #dfe6ed;
+    margin: auto;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+ul{
+    list-style: none;
+}
+footer{
+    background-color: #dfe6ed;
+    padding: 70px 0;
+}
+
+.footer-color{
+    width: 25%;
+    padding:0%;
+}
+
+.footer-color h4{
+    font-size: 18px;
+    color: #293845;
+}
+footer div #social-media{
+    background-color: rgb(75,92,107);
+}
