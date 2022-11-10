@@ -1,0 +1,266 @@
+/*****************/
+/* HEADER */
+/*****************/
+
+.header{
+	display: flex;
+	justify-content: space-between;
+	background-color: #fdf2e9;
+	align-items: center;
+	padding: 0 4.8rem;
+	/*Because we want head to be sticky later*/
+	height: 9.6rem;
+}
+
+.logo{
+	height: 2.4rem;
+}
+
+/***************8888**/
+/* NAVIGATION SECTION*/
+/****************8888*/
+
+.main-nav-list{
+	list-style: none;
+	align-items: center;
+	display: flex;
+	gap: 3.2rem;
+}
+
+.main-nav-list:link,
+.main-nav-list:visited{
+	display: inline-block;
+	text-decoration: none;
+	font-size: 1.8rem;
+	font-weight: 500;
+	color: #333333;
+	transition: all 0.3s;
+}
+
+.main-nav-list:hover,
+.main-nav-list:active{
+	color: #cf711f;
+}
+
+.main-nav-list.nav-cta:link,  /*And operator which means both ".main-nav-list" and "nav-cta" will rules will be applied*/
+.main-nav-list.nav-cta:visited{
+	padding: 1.2rem 2.4rem;
+	border-radius: 9px;
+	color: #fff;
+	background-color: #cf711f;
+}
+
+.main-nav-list.nav-cta:hover,
+.main-nav-list.nav-cta:active{
+	color: #cf711f;
+}
+/*****************/
+/* HERO SECTION*/
+/*****************/
+
+.section-hero{
+	background-color: #fdf2e9;
+	padding: 4.8rem 0 9.8rem 0;
+}
+
+.hero{
+	max-width: 130rem;
+	margin: 0 auto;
+	display: grid;
+	padding: 0 3.2rem;
+	grid-template-columns: 1fr 1fr;
+	gap: 9.6rem;
+	align-items: center;
+}
+
+
+
+.hero-description{
+	font-size: 2rem;
+	line-height: 1.6;
+	margin-bottom: 4.8rem;
+}
+
+
+
+.delivered-meals{
+	display: flex;
+	margin-top: 8rem;
+	align-items: center;
+	gap: 1.6rem;
+}
+
+.delivered-imgs{
+	display: flex;
+	/* You can't create negative gap hence we will use -ve Margin for Particular image*/
+
+}
+
+.delivered-imgs img{
+	height: 4.8rem;
+	width: 4.8rem;
+	border-radius: 50%;
+	margin-right: -1.6rem;
+	border: 3px solid #fdf2e9;
+}
+
+.delivered-imgs img:last-child{
+	margin: 0;
+}
+
+.delivered-text{
+	font-size: 1.8rem;
+	font-weight: 600;
+}
+
+span{
+	color: #cf711f;
+}
+
+.hero-img{
+	width: 100%;
+}
+/***********************/
+/* FEATURED IN SECTION */
+/***********************/
+
+.heading-featured-in{
+	font-size: 1.4rem;
+	text-transform: uppercase;
+	letter-spacing: 0.75px;
+	font-weight: 500;
+	text-align: center;
+	margin-bottom: 2.4rem;
+	color: #999;
+}
+
+.section-featured{
+	padding: 4.8rem 0 3.2rem 0;
+	}
+
+.logos{
+	display: flex;
+	justify-content: space-around;
+
+}
+
+.logos img{
+	height: 3.2rem;
+	filter: brightness(0);
+	opacity: 50%;
+}
+
+
+
+
+
+/*****************/
+/* How it Works Section */
+/*****************/
+
+.section-how{
+	padding: 9.6rem 0;
+}
+
+.step-img{
+ max-width: 35%;
+}
+
+.step-number{
+	font-size: 8.6rem;
+	font-weight: 600;
+	color: #ddd;
+	margin-bottom: 1.2rem;
+}
+
+.step-description{
+	font-size: 1.8rem;
+	line-height: 1.8;
+}
+
+.step-img-box{
+	position:  relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.step-img-box::before,
+.step-img-box::after{
+	content: "";
+	display: block;
+	border-radius: 50%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	
+}
+
+.step-img-box::before{
+	width: 60%;
+	
+	/*Parents 60% height */
+	padding-bottom: 60%;
+	
+	background-color: #fdf2e9;
+	z-index: -2;
+}
+
+.step-img-box::after{
+	width: 45%;
+
+	padding-bottom: 45%;
+	background-color: #fae5d3;
+
+	 z-index: -1;
+}
+
+/*****************/
+/* MEALS SECTION */
+/*****************/
+
+.section-meals{
+	padding: 9.6rem 0;
+}
+
+.meal-title{
+	font-size: 2.6rem;
+	color: #333333;
+	font-weight: 600;
+	margin-bottom: 3.2rem;
+}
+
+.meal-attributes{
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	
+	list-style: none
+}
+
+.meal-attribute{
+	font-size: 1.8rem;
+	display: flex;
+	align-items: center;
+	gap: 1.6rem;
+}
+
+.meal-icon{
+	height: 2.4rem;
+	color: #e67e22;
+	width: 2.4rem;
+}
+
+.meal-img{
+	width: 100%;
+}
+
+.meal{
+	box-shadow: 0 2.4rem 4.8rem rgba(0,0,0, 0.1);
+	
+}
+
+.meal-tags{
+	margin-bottom: 1.2rem;
+}
