@@ -1,88 +1,96 @@
-* {
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@500;600;700&display=swap');
+
+/*
+--- 01 TYPOGRAPHY SYSTEM
+
+
+- Font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- Font weights
+
+
+- Line heights
+
+
+- Letter spacing
+
+
+--- 02 COLORS
+
+- Primary:
+- Tints:
+- Shades:
+- Accents:
+- Greys
+
+--- 05 SHADOWS
+
+--- 06 BORDER-RADIUS
+
+--- 07 WHITESPACE
+
+- Spacing system (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+*/
+
+*{
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body {
-    margin: 0px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+html{
+    font-size: 62.5%;
+    /*background-color: #0f0112;*/
+    font-family: jura,sans-serif;
 }
 
-.button {
-    background:
-    linear-gradient(to right, #732fdf, #bd00ff)
+body{
+    background-color: #0f0112;
 }
 
-header h1 {
-    text-align: center;
-    font-size: 40px;
-    color: white;
+.container {
+    max-width: 120rem; /*STANDARD OTHER EX: 1140px*/
+    margin: 0 auto;
+    padding: 0 3.2rem;
 }
 
-header {
-    padding: 40px;
-    background: hsla(288, 74%, 43%, 1);
-
-background: linear-gradient(90deg, hsla(288, 74%, 43%, 1) 20%, hsla(242, 84%, 54%, 1) 100%);
-
-
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#9F1DBF", endColorstr="#2E27EC", GradientType=1 );
+.circle{
+    width: 100%;
+    height: 100%;
+    bgc
 }
 
-nav {
-    background-color: rgb(0, 0, 0);
-    overflow: hidden;
+.main-text{
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    letter-spacing: 6.4rem;
+    font-size: 3.2rem;
+    color: #e6e6e6;
+}
+.circle{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-nav a {
-    text-decoration: none;
-    padding: 20px;
-    text-align: center;
-    float: left;
-    color: white;
+.circle::before, .circle::after{
+    content: "";
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    
+    
 }
 
-main {
-    background-color: white;
-    text-align: center;
-}
 
-h2 {
-    padding: 20px;
-}
 
-section:nth-child(even) {
-    background-color: rgb(241, 241, 241);
-}
 
-section {
-    min-height: 100vh;
-}
-
-video {
-    padding: 10px;
-}
-
-iframe {
-    height: 75vh;
-}
-
-img {
-    padding: 10px;
-}
-
-section h5 {
-    margin: 40px;
-}
-
-footer {
-    background-color: rgb(19, 19, 19);
-    overflow: hidden;
-}
-
-footer a {
-    text-decoration: 0;
-    padding: 20px;
-    text-align: center;
-    float: left;
-    color: rgb(255, 255, 255);
-}
