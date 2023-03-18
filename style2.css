@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap');
+
+/*
+t sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- Spacing system (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+    font-family: 'Jura','Inter',"Montserrat", sans-serif;
+    height: 100%;
+}
+
+body{
+    background-image: url(https://images.unsplash.com/photo-1467685790346-20bfe73a81f0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index:-999;
+    height: 100%;
+}
+
+.circle::before{
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    width: 40rem;
+    height: 40rem;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: rgb(30, 0, 34);
+    z-index: 1;
+    box-shadow: 0 -110px 120px -70px rgba(220, 50, 82, 1);
+    background: linear-gradient(180deg, rgba(32,0,37,1) 0%, rgba(27,0,31,1) 35%, rgba(23,0,26,0.34338747099767986) 100%);
+    /*Aadarsh Color contrast*/
+    /*box-shadow: 0px -120px 100px -70px rgba(196,42,73,1);*/
+    overflow: visible;
+}
+
+span{
+    color: white;
+    font-size: 3.2rem;
+    font-family: 'Jura','Inter',"Montserrat", sans-serif;
+    letter-spacing: 5.2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    wrap-option: no-wrap;
+    
+}
+
+
+
+
+
