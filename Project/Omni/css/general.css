@@ -15,6 +15,7 @@ Default: 1
 Small: 1.05
 Medium: 1.2
 Paragraph: 1.6
+Large: 1.8
 
 - Letter spacing
 0.5 px
@@ -27,7 +28,8 @@ Paragraph: 1.6
 - Shades: #cf711f
 - Accents:
 - Greys
-6f6f6f (Lightest grey Allowed)
+#6f6f6f (Lightest grey Allowed)
+#767676
 #555
 #333
 
@@ -36,7 +38,6 @@ Paragraph: 1.6
 --- 06 BORDER-RADIUS
 Default: 9px
 medium: 11px
-
 Default: 9px
 
 --- 07 WHITESPACE
