@@ -1,0 +1,66 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    /*font-size: 10px;*/
+    /*10px /16px = 0.625 = 62.5%*/
+    /*Percentage of user's browser font-size setting*/
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+            /*"Lexend",*/
+            /*"Lora",*/
+            /*"Major Mono Display",*/
+            /*"Montserrat Alternates"*/
+            /*,"Sora",*/
+            /*"Spectra SC",*/
+            /*"Linden Hill",*/
+            /*"Julius Sans One",*/
+            /*"Jost",*/
+            "Inter","Rubik", sans-serif;
+    line-height: 1;
+    font-weight: 400;
+    color: #555;
+}
+
+.container {
+    max-width: 120rem; /*STANDARD OTHER EX: 1140px*/
+    margin: 0 auto;
+    padding: 0 3.2rem;
+}
+
+.primary-heading {
+    font-family: "Raleway", "Source Sans Pro"  ,Inter, "Rubik", sans-serif;
+    font-size: 6.2rem;
+    line-height: 1.05;
+    margin-bottom: 2.0rem;
+    color: #eae8eb;
+}
+
+.grad-text{
+    background: -webkit-linear-gradient(#C77DFF, #4895EF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sub-heading{
+    font-size: 2.0rem;
+    font-weight: bolder;
+    color: #eae8eb;
+    margin-bottom: 2.0rem;
+}
+
+.sep{
+    font-size: 2rem;
+}
+
+.sub-text{
+    font-size: 1.6rem;
+    color: #837585;
+}
