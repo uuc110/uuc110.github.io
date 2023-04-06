@@ -179,5 +179,71 @@ button:active:before {
     background-color: #3C096C;
 }
 
+/******************/
+/* SKill Section */
+/*****************/
+
+.skill-section{
+    background: -moz-linear-gradient(45deg, hsla(271, 100%, 14%, 1) 0%, hsla(276, 98%, 16%, 1) 29%, hsla(268, 100%, 11%, 1) 59%, hsla(263, 92%, 5%, 1) 100%);
+    background: -webkit-linear-gradient(45deg, hsla(271, 100%, 14%, 1) 0%, hsla(276, 98%, 16%, 1) 29%, hsla(268, 100%, 11%, 1) 59%, hsla(263, 92%, 5%, 1) 100%);
+    padding-top: 9.6rem;
+    padding-bottom: 9.6rem;
+}
+
+.skill-box{
+    margin: 4.8rem 0;
+    display: grid;
+    gap: 9.6rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+.skill-lan-icon-box{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 3.2rem;
+    column-gap: 2.4rem;
+
+}
+
+.icon-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    color: #eae8eb;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+
+.skill-title{
+    font-size: 2.8rem;
+    font-weight: 700;
+}
+
+.secondary-heading{
+    font-size: 3.2rem;
+    color: #eae8eb;
+    line-height: 1.4;
+}
+
+.skill-text-box{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    gap: 1.4rem;
+    justify-content: center;
+}
+
+.skill-descriptionn{
+    font-size: 2.4rem;
+    line-height: 1.4;
+    color: #9d99a3;
+    display: flex;
+    align-self: center;
+}
+
+
 
 
