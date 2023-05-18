@@ -38,6 +38,8 @@
 --heliotrope: #c77dffff;
 --mauve: #e0aaffff;
 
+https://coolors.co/120214-1b001e-8b1e39-a7254a-751a34 : Color Shades for this website
+
 
 - Tints:
 
@@ -114,7 +116,7 @@ button:hover {
 button:before {
     top: 100%;
     left: 100%;
-    transition: all .7s;
+    transition: all .3s;
 }
 
 button:hover:before {
@@ -138,6 +140,14 @@ button:active:before {
     align-items: center;
     height: 9.6rem;
     padding: 0 8.4rem;
+    
+    /* FOR BLURY STICKY NAVIGATION BAR*/
+    /*top: 0;*/
+    /*position: sticky;*/
+    /*backdrop-filter: blur(10px);*/
+    /*-webkit-backdrop-filter: blur(10px);*/
+    /*background-color: rgba(10, 1, 24, 0.45);*/
+    /*z-index: 999;*/
 }
 
 .Logo {
@@ -239,10 +249,80 @@ button:active:before {
 .skill-descriptionn{
     font-size: 2.4rem;
     line-height: 1.4;
-    color: #9d99a3;
+    color: #9f98b1;
     display: flex;
     align-self: center;
 }
+
+
+/******************/
+/* Project Section */
+/*****************/
+
+.project-section{
+    background-color: #0a0118;
+    /*padding-top: 9.6rem;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    padding: 4.8rem 9.6rem;
+}
+
+
+
+.project-title{
+    font-size: 4.8rem;
+    font-family: "Julius Sans One", "Inter", "Sans Serif Collection", serif;
+    text-align: center;
+    color: #eae8eb;
+    padding-bottom: 3.2rem;
+}
+
+.project-card-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4.8rem;
+    
+    
+}
+
+.project-card{
+    padding: 2rem;
+    border: 1px solid rgba(234, 232, 235, 0.24);
+    border-radius: 14px;
+}
+
+.project-card-grid figure img{
+    width: 400px;
+    background-position: center;
+    height: 200px;
+    padding-bottom: 2rem;
+}
+
+.project-heading{
+    font-size: 1.8rem;
+    color: #eae8eb;
+    padding-bottom: 1.2rem;
+}
+
+.project-description{
+    color: #9f98b1;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.plus-add{
+    height: 20rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30rem;
+    padding: 16rem;
+    color: #C77DFF;
+}
+
 
 
 
