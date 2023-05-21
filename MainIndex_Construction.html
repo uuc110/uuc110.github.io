@@ -19,101 +19,176 @@
     </style>
     <link href="MainCSS/style.css" rel="stylesheet"/>
     <link href="MainCSS/Genral.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    <link rel="stylesheet" href="devicon.min.css">
+    <link href="MainCSS/MediaQuery.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" rel="stylesheet">
+    <link href="devicon.min.css" rel="stylesheet">
+    <style>
+        /*fix the bgc color of header which is white and got blur*/
+        .sourabh {
+            background-color: #1b1b1b;
+        }
+    </style>
 </head>
 <body>
+    <header class="header">
+        <a href="MainIndex_Construction.html"> <img alt="Website Logo" class="Logo" src="Assets/Img/logo.svg"></a>
 
-<header class="header">
-    <a href="MainIndex_Construction.html"> <img alt="Website Logo" class="Logo" src="Img/logo.svg"></a>
+        <nav class="nav">
+            <ul class="nav-bar">
+                <li><a class="nav-link" href="#">Home</a></li>
+                <li><a class="nav-link" href="#">About</a></li>
+                <li><a class="nav-link" href="#">Skills</a></li>
+                <li><a class="nav-link" href="#">Projects</a></li>
+            </ul>
+        </nav>
+        <a class="nav-link btn-cta" href="#">Contact Me</a>
+    </header>
 
-    <nav class="nav">
-        <ul class="nav-bar">
-            <li><a class="nav-link" href="#">Home</a></li>
-            <li><a class="nav-link" href="#">About</a></li>
-            <li><a class="nav-link" href="#">Skills</a></li>
-            <li><a class="nav-link" href="#">Projects</a></li>
-        </ul>
-    </nav>
-    <a class="nav-link btn-cta" href="#">Contact Me</a>
-</header>
-
-<main>
-    <section class="section-hero">
-        <div class="container hero grid grid-2-cols">
-            <div class="text-hero">
-                <h1 class="primary-heading">
-                    Hi There,<br>I'm <span class="grad-text">Sourabh Kushwah.</span>
-                </h1>
-                <p class="sub-heading">
-                    <span class="grad-text">&#x3C;</span> Front-End Developer <span class="grad-text sep">|
+    <main>
+        <!--    HERO SECTION -->
+        <section class="section-hero">
+            <div class="container hero grid grid-2-cols">
+                <div class="text-hero">
+                    <h1 class="primary-heading">
+                        Hi There,<br>I'm <span class="grad-text">Sourabh Kushwah.</span>
+                    </h1>
+                    <p class="sub-heading">
+                        <span class="grad-text">&#x3C;</span> Front-End Developer <span class="grad-text sep">|
                     </span> Competitive Programmer
-                    <span class="grad-text">/&#x3E;</span>
-                </p>
+                        <span class="grad-text">/&#x3E;</span>
+                    </p>
 
-                <!--                <p class="sub-text">-->
-                <!--                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat modi neque, nobis quam rerum sit-->
-                <!--                    suscipit ullam! Autem, esse minima natus qui quia sunt vel.-->
-                <!--                </p>-->
-                <div class="Btn-contact">
-                    <button>
-                        <span>Contact me</span>
-                    </button>
-                </div>
+                    <!--                <p class="sub-text">-->
+                    <!--                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat modi neque, nobis quam rerum sit-->
+                    <!--                    suscipit ullam! Autem, esse minima natus qui quia sunt vel.-->
+                    <!--                </p>-->
+                    <div class="Btn-contact">
+                        <button>
+                            <span>Contact me</span>
+                        </button>
+                    </div>
 
-            </div>
-            <div class="img-hero">
-                <img alt="Photo of the Owner" src="Img/logo-phone.svg">
-            </div>
-        </div>
-    </section>
-
-    <!--    SKILL SECTION -->
-
-    <section class="skill-section">
-        <div class="container skill-box">
-            <div class="skill-lan-icon-box">
-                <div class="icon-box">
-                    <img  alt="Language Icon" class="Lang-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" />
-                    <p class="icon-text">C++</p>
                 </div>
-                <div class="icon-box">
-                    <img  alt="Language Icon" class="Lang-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg" />
-                    <p class="icon-text">Java</p>
-                </div>
-                <div class="icon-box">
-                    <img  alt="Language Icon" class="Lang-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original-wordmark.svg" />
-                    <p class="icon-text">Ruby</p>
-                </div>
-                <div class="icon-box">
-                    <img  alt="Language Icon" class="Lang-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg" />
-                    <p class="icon-text">HTML</p>
-                </div>
-                <div class="icon-box">
-                    <img alt="Language Icon" class="Lang-icon"  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg" />
-                    <p class="icon-text">CSS</p>
-                </div>
-
-                <div class="icon-box">
-                    <img  alt="Language Icon" class="Lang-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" />
-                    <p class="icon-text">Js</p>
+                <div class="img-hero">
+                    <img alt="Photo of the Owner" src="Assets/Img/logo-phone.svg">
                 </div>
             </div>
-            <div class="skill-text-box">
-                <div class="skill-title"><span class="grad-text">&#60;/&#62; Skill Stack</span></div>
-                <h2 class="secondary-heading">
-                    Rive runs anywhere with our open-source runtimes
-                </h2>
+        </section>
 
-                <p class="skill-descriptionn">
-                    No code or full code, you choose. Easily embed
-                    interactive animations or manipulate everything
-                    with code — Rive empowers you to work the
-                    way you want.
-                </p>
+        <!--    SKILL SECTION -->
+
+        <section class="skill-section">
+            <div class="container skill-box">
+                <div class="skill-lan-icon-box">
+                    <div class="icon-box">
+                        <img alt="Language Icon" class="Lang-icon"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"/>
+                        <p class="icon-text">C++</p>
+                    </div>
+                    <div class="icon-box">
+                        <img alt="Language Icon" class="Lang-icon"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg"/>
+                        <p class="icon-text">Java</p>
+                    </div>
+                    <div class="icon-box">
+                        <img alt="Language Icon" class="Lang-icon"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original-wordmark.svg"/>
+                        <p class="icon-text">Ruby</p>
+                    </div>
+                    <div class="icon-box">
+                        <img alt="Language Icon" class="Lang-icon"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg"/>
+                        <p class="icon-text">HTML</p>
+                    </div>
+                    <div class="icon-box">
+                        <img alt="Language Icon" class="Lang-icon"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg"/>
+                        <p class="icon-text">CSS</p>
+                    </div>
+
+                    <div class="icon-box">
+                        <img alt="Language Icon" class="Lang-icon"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg"/>
+                        <p class="icon-text">Js</p>
+                    </div>
+                </div>
+                <div class="skill-text-box">
+                    <div class="skill-title"><span class="grad-text">&#60;/&#62; Skill Stack</span></div>
+                    <h2 class="secondary-heading">
+                        Rive runs anywhere with our open-source runtimes
+                    </h2>
+
+                    <p class="skill-descriptionn">
+                        No code or full code, you choose. Easily embed
+                        interactive animations or manipulate everything
+                        with code — Rive empowers you to work the
+                        way you want.
+                    </p>
+                </div>
             </div>
-        </div>
-    </section>
-</main>
+        </section>
+
+        <section class="project-section">
+            <div class="project-title margine-bottom-md">
+                Projects
+            </div>
+<!--            <div class="container project-grid">-->
+<!--                <div class="proj-card">-->
+<!--                    <a href="https://sourabh.kushwah.net/Project/Omni/"><img alt="OmniFood Webpage"-->
+<!--                                                                             src="Assets/Img/OmniFood-Thumbnail.png"></a>-->
+<!--                    <h3 class="project-heading">OmniFood</h3>-->
+<!--                    <p class="project-description">-->
+<!--                        Omnifood is a sleek and modern food delivery website that offers a variety of healthy and tasty-->
+<!--                        meal options to its customers.-->
+<!--                    </p>-->
+<!--                </div>-->
+
+<!--                <div class="proj-card">-->
+<!--                    <a href="https://sourabh.kushwah.net/"> <img alt="Coming soon Webpage"-->
+<!--                                                                 src="Assets/Img/ComingSoon-Thumbnail.png"></a>-->
+<!--                    <h3 class="project-heading">Coming Soon</h3>-->
+<!--                    <p class="project-description">-->
+<!--                        New landing page coming soon with stylish center design and social media links in footer. More-->
+<!--                        information on launch to follow.-->
+<!--                    </p>-->
+<!--                </div>-->
+
+<!--                <div class="proj-card plus-add">-->
+<!--                    <ion-icon name="add-circle-outline"></ion-icon>-->
+<!--                </div>-->
+<!--            </div>-->
+
+            <div class="container project-card-grid">
+                <div class="project-card">
+                    <figure>
+                        <img src="Assets/Img/ComingSoon-thumbnail.png" alt="ThumbNail of Landing page of Coming soon of Owner">
+                    </figure>
+
+                    <p class="project-title">
+                        Coming Soon
+                    </p>
+                    <p class="project-description">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, culpa debitis dolorum enim est eum modi neque quasi. Beatae, culpa.
+                    </p>
+                </div>
+
+                <div class="project-card">
+                    <figure>
+                        <img src="Assets/Img/OmniFood-Thumbnail.png" alt="ThumbNail of Food Ordering Website">
+                    </figure>
+
+                    <p class="project-title">
+                        Coming Soon
+                    </p>
+                    <p class="project-description">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, culpa debitis dolorum enim est eum modi neque quasi. Beatae, culpa.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+<!--</div>-->
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

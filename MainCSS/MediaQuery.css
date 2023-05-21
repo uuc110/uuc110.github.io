@@ -1,0 +1,23 @@
+/* rem and em do Not depend on html font-sze in media queries!
+Insted, 1rem = 1em = 16px
+
+- Font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- Spacing system (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+*/
+
+/* SMARTPHONE */
+@media screen and (max-width: 30rem) {
+
+}
+
+@media screen and (max-width: 45em) {
+
+}
+
+@media screen and (max-width: 59em) {
+
+}

@@ -61,7 +61,6 @@ body {
 .signup_container{
     max-width: 120rem;
     margin: 0 auto;
-    /*padding: 4.8rem;*/
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
@@ -129,16 +128,16 @@ img{
     position: relative;
 }
 
-input[type="text"], input[type="email"], input[type="password"], textarea{
+input[type="text"], input[type="email"], input[type="password"], textarea {
     border: none;
     outline: none;
     font-size: 1.8rem;
     font-weight: 500;
     color: #555;
     width: 100%;
-    padding: 1.2rem;
+    padding: 1.2rem 2.4rem 1.2rem 1.2rem;
+    border-radius: 0 22px 22px 0px;
 }
-
 
 
 .submit-btn{
