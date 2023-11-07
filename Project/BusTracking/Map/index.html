@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chat app using Socket IO and Node JS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+            justify-self: center;
+            margin: 5px auto;
+        }
+
+        #loc {
+            height: 900px;
+            width:  90%;
+            border: 10px solid green;
+            background-color: grey;
+            justify-self: center;
+            margin: auto;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+
+        .gfg {
+            font-size: 40px;
+            font-weight: bold;
+            color: #009900;
+            margin-left: 20px;
+        }
+
+        #btn {
+            height: 70px;
+            width: 100%;
+            border: 3px solid orange;
+            border-radius: 5px;
+            margin: 5px auto;
+            justify-self: center;
+            /* margin-left: 400px; */
+            text-align:center;
+        }
+
+        .geeks {
+            margin-left: 150px;
+        }
+
+        p {
+            font-size: 20px;
+            margin-left: 20px;
+            background-color: yellow;
+            text-align: center;
+            /* display: inline; */
+        }
+
+
+        #loc-paraID10 {
+            height: 40px;
+            border: 5px solid green;
+            border-radius: 5px;
+            margin: 5px auto;
+            color: white;
+            text-align: center;
+        }
+
+        #loc-paraID12 {
+            height: 40px;
+            border: 5px solid green;
+            border-radius: 5px;
+            margin: 5px auto;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="font-bold text-green-500 
+			text-3xl text-center mt-5">
+        GeeksforGeeks
+    </h1>
+    <div>
+        <h2 class="font-semibold text-xl 
+				text-center mt-5" id="logo">
+            Chat App using Socket io
+        </h2>
+    </div>
+    <form class="flex flex-col justify-center 
+				items-center mt-5" id="form">
+        <input class="border border-gray-400 
+					rounded-md mt-5 p-1" type="text" placeholder="Name" id="myname">
+        <input class="border border-gray-400 
+					rounded-md mt-5 p-1" type="text" placeholder="Message" id="message">
+        <button class="bg-blue-500 rounded-md p-2 
+					text-white mt-5">
+            Send
+        </button>
+    </form>
+    <div class="flex flex-col justify-center 
+				items-center mt-5" id="messageArea">
+    </div>
+
+
+
+    
+
+    <script src="/socket.io/socket.io.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIssu3rHGZAXQEDsekM0JzPrMqZv1mds8&callback=initMap"></script>
+    <script type="text/javascript">
+        let socket = io();
+
+        let form = document.getElementById('form');
+        let myname = document.getElementById('myname');
+        let message = document.getElementById('message');
+        let messageArea = document.getElementById("messageArea");
+        let mycoords = document.getElementById('coords');
+
+
+        var variable7 = document.getElementById("loc-paraID1");
+        var variable8 = document.getElementById("loc-paraID2");
+        var variable9 = document.getElementById("loc-paraID3");
+        var variable10 = document.getElementById("loc-paraID10");
+        var variable11 = document.getElementById("loc-paraID11");
+        var variable13 = document.getElementById("loc-paraID13");
+        var variable14 = document.getElementById("loc-paraID14");
+        var variable15 = document.getElementById("loc-paraID15");
+        var variable16 = document.getElementById("loc-paraID16");
+        var variable17 = document.getElementById("btn");
+
+
+        //Ask new user for his/her name
+        const name = prompt("Enter your name to join");
+        const userType = prompt("Enter 1 for Driver 2 for Passenger");
+        
+       var userTypeName1 ;
+        if(userType==1){
+            userTypeName1 = "Driver";
+        }
+        if(userType==2){
+            userTypeName1 = "Passenger";
+        }
+        function getlocation(callback) {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (pos) {
+                   
+                    const location = {
+                        latitude: pos.coords.latitude,
+                        longitude: pos.coords.longitude,
+                        accuracy: pos.coords.accuracy,
+                        timestamp: pos.timestamp,
+                        speed: pos.speed,
+                        heading: pos.coords.heading,
+                        altitude: pos.coords.altitude,
+                        name:name,
+                        userTypeName: userTypeName1,
+                    };
+                  const newLocation = {lat: pos.coords.latitude,
+                                      lng: pos.coords.longitude,
+                                      accuracy: pos.coords.accuracy,
+                                      timestamp: pos.timestamp,
+                                      speed: pos.speed,
+                                      heading: pos.coords.heading,
+                                      altitude: pos.coords.altitude,
+                                      name:name,
+                                      userTypeName: userTypeName1,};
+                    const locationArr = [newLocation];
+                    // callback(location);
+                    initMap(locationArr, newLocation, handleLocation2Data);
+                    socket.emit('location',newLocation);
+                    
+                }, errHand);
+            }
+        }
+        
+        // Define a sample callback function that uses the location data
+        function handleLocationData(pos) {
+            const myCoordinates = [{ lat: pos.latitude, lng: pos.longitude, name: name }];
+                console.log(myCoordinates,"hii");
+            initMap(myCoordinates, (myCoordinates) => {
+            
+            const map = new google.maps.Map(document.getElementById('map'), {
+                center: myCoordinates[0],
+                zoom: 14,
+            });
+            //   Add a marker for the user's location
+                const marktitle = myCoordinates[0].name+" "+userTypeName1;
+                const marker = new google.maps.Marker({
+                    position: myCoordinates[0],
+                    map: map,
+                    title: marktitle,
+                })
+            
+            });
+            console.log("handlelocation function has run");
+           
+        }
+
+        // let the server know name of user 
+        socket.emit('new-user-joined', name ,userType);
+        var j = 0;
+
+        // Update the map with user locations
+        socket.on('updateLocations', (locationArr ) => {
+            // Update your map here using userLocations
+            console.log('User locations:', locationArr );
+
+
+
+
+
+
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (pos) {
+                    
+                    const location = {
+                        latitude: pos.coords.latitude,
+                        longitude: pos.coords.longitude,
+                        accuracy: pos.coords.accuracy,
+                        timestamp: pos.timestamp,
+                        speed: pos.speed,
+                        heading: pos.coords.heading,
+                        altitude: pos.coords.altitude,
+                        name:name,
+                        userTypeName: userTypeName1,
+                    };
+                  const newLocation = {lat: pos.coords.latitude,
+                                      lng: pos.coords.longitude,
+                                      accuracy: pos.coords.accuracy,
+                                      timestamp: pos.timestamp,
+                                      speed: pos.speed,
+                                      heading: pos.coords.heading,
+                                      altitude: pos.coords.altitude,
+                                      name:name,
+                                      userTypeName: userTypeName1,};
+                    // const locationArr = [newLocation];
+                    // callback(location);
+                
+                    socket.on('new-driver-joined',(myCoords,name)=>{
+                        console.log("coordinates of newlocation inside driver joined ",newLocation);
+                         console.log("driver joined ",name); 
+                         initMap(locationArr, newLocation ,handleLocation2Data );
+                       });
+                       socket.on('very-new-user-joined',(myCoords,name)=>{
+                            console.log("you joined ",name);
+                            initMap(locationArr, newLocation ,handleLocation2Data );
+                       });
+                    
+                }, errHand);
+            }
+
+
+
+
+
+
+
+
+
+
+
+            
+
+            j++;
+       //      socket.on('new-driver-joined',(myCoords,name)=>{
+       //   console.log("driver joined ",name); 
+       //   initMap(locationArr, myCoords ,handleLocation2Data );
+       // });
+       // socket.on('very-new-user-joined',(myCoords,name)=>{
+       //      console.log("you joined ",name);
+       //      initMap(locationArr, myCoords ,handleLocation2Data );
+       // });
+
+        });
+ 
+       
+        getlocation(handleLocationData);
+
+        // Create a function to emit an event and return a promise
+        socket.on('user-joined', location => {
+            variable7.innerHTML = "Latitude: " +
+                location.lat;
+            variable8.innerHTML = "Longitude: " +
+                location.lng;
+            variable13.innerHTML = "Timestamp: " +
+                location.timestamp;
+            variable14.innerHTML = "Speed: " +
+                location.speed;
+            variable15.innerHTML = "Altitude: " +
+                location.altitude;
+            variable16.innerHTML = "Accuracy: " +
+                location.accuracy;
+            variable10.innerHTML =
+                location.name + " ki Location In Map";
+            variable11.innerHTML =
+                location.name + " ke Location Coordinates In Map";
+
+        })
+       function handleLocation2Data(locationArr , myCoords){
+               // Do something with userCoordinates once they are available
+              
+               const map = new google.maps.Map(document.getElementById('map'), {
+                   center: myCoords,
+                   zoom: 14,
+               });
+        console.log("myCoords above marker");
+           const title1 = myCoords.name+" "+myCoords.userTypeName;
+              const marker = new google.maps.Marker({
+                  position: myCoords,
+                  map: map,
+                  title: title1,
+              })
+           marker.setIcon("http://maps.google.com/mapfiles/ms/icons/blue-dot.png");
+           // Create an info window
+           var infowindow = new google.maps.InfoWindow({
+             content: title1, // Add your content here
+           });
+
+           // Open the info window when the map loads
+           infowindow.open(map, marker);
+              //   Add a marker for the user's location
+               for (let i = 0; i < locationArr.length; i++) {
+                   console.log("locationArr inside for loop");
+                   const title1 = locationArr[i].name+" "+locationArr[i].userTypeName;
+                   const marker = new google.maps.Marker({
+                       position: locationArr[i],
+                       map: map,
+                       title: title1,
+                   })
+                    marker.setIcon("http://maps.google.com/mapfiles/ms/icons/green-dot.png");
+                   // Create an info window
+                      var infowindow = new google.maps.InfoWindow({
+                        content: title1, // Add your content here
+                      });
+
+                      // Open the info window when the map loads
+                      infowindow.open(map, marker);
+               }
+
+           // Add this code in your existing JavaScript code
+           const routeDiv = document.getElementById('route');
+           const calculateRouteButton = document.getElementById('btn');
+           let directionsService;
+           let directionsRenderer;
+
+           calculateRouteButton.addEventListener('click', () => {
+               
+             if (myCoords && locationArr[0]) {
+                 console.log("calculateRoute has clicekd");
+               directionsService = new google.maps.DirectionsService();
+               directionsRenderer = new google.maps.DirectionsRenderer({ map });
+
+               const start = new google.maps.LatLng(myCoords.lat, myCoords.lng);
+               const end = new google.maps.LatLng(locationArr[0].lat, locationArr[0].lng);
+
+               const request = {
+                 origin: start,
+                 destination: end,
+                 travelMode: google.maps.TravelMode.DRIVING,
+               };
+
+               directionsService.route(request, (result, status) => {
+                 if (status === google.maps.DirectionsStatus.OK) {
+                   directionsRenderer.setDirections(result);
+                 } else {
+                   alert('Unable to get directions: ' + status);
+                 }
+               });
+             }
+           });
+
+               
+       };
+        // Initialize and display the map
+        function initMap(locationArr , myCoordinates , callback) {
+            if (Array.isArray(locationArr) && locationArr.length > 0) {
+
+                callback(locationArr,myCoordinates);
+            } else {
+                console.error('locationArr is either not an array or is empty');
+            }
+
+        }
+
+
+
+        function errHand(err) {
+            switch (err.code) {
+                case err.PERMISSION_DENIED:
+                    result.innerHTML =
+                        "The application doesn't have the permission" +
+                        "to make use of location services";
+                    break;
+                case err.POSITION_UNAVAILABLE:
+                    result.innerHTML =
+                        "The location of the device is uncertain";
+                    break;
+                case err.TIMEOUT:
+                    result.innerHTML =
+                        "The request to get user location timed out";
+                    break;
+                case err.UNKNOWN_ERROR:
+                    result.innerHTML =
+                        "Time to fetch location information exceeded" +
+                        "the maximum timeout interval";
+                    break;
+            }
+        }
+
+
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            if (message.value) {
+                socket.emit('send name', myname.value);
+                socket.emit('send message', message.value);
+            
+                message.value = "";
+            }
+        });
+
+        socket.on("send name", (username) => {
+            let name = document.createElement("p");
+            name.style.backgroundColor = "grey";
+            name.style.width = "100%";
+            name.style.textAlign = "center";
+            name.style.color = "white";
+            name.textContent = username + ":";
+            messageArea.appendChild(name);
+        });
+
+
+
+        socket.on("send message", (chat) => {
+            let chatContent = document.createElement("p");
+            chatContent.textContent = chat;
+            messageArea.appendChild(chatContent);
+        }); 
+    </script>
+    <!-- <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIssu3rHGZAXQEDsekM0JzPrMqZv1mds8&callback=initMap"></script> -->
+
+</body>
+
+</html>

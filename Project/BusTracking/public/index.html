@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>RouteSync</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet"/>
+    <link href="main.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,300,1,200"
+          rel="stylesheet"/>
+</head>
+<body>
+<nav class="sidebar" style="z-index: 100;">
+    <header>
+        <div class="logo-text">
+            <span class="main-logo">
+                <img alt="#" class="brand-logo" src="assets/icons/thunder-svgrepo-com.svg">
+            </span>
+        </div>
+    </header>
+
+    <div class="side-navbar">
+        <div class="side-navbar_links">
+            <a href="#"><span class="material-symbols-rounded">home_app_logo</span></a>
+            <a href="#"><span class="material-symbols-rounded">conversion_path</span></a>
+            <a href="#"><span class="material-symbols-rounded">mail</span></a>
+            <a href="#"><span class="material-symbols-rounded">deployed_code</span></a>
+            <a href="#"><span class="material-symbols-rounded">badge</span></a>
+        </div>
+
+        <div class="side-navbar_setting-links">
+            <div class="setting-icons">
+                <a href="#"><span class="material-symbols-rounded">mark_chat_unread</span></a>
+                <a href="#"><span class="material-symbols-rounded">settings</span></a>
+            </div>
+            <div class="profile-container" role="img">
+                <span><img alt="" class="profileUser" src="assets/icons/profile-pic.png"></span>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="panel" style="z-index: 100;">
+    <div class="route-panel">
+        <div class="heading">
+            <span>Delivery Tracking</span>
+        </div>
+        <div class="driver-details">
+            <div class="driver-user" id="collasped">
+                <div class="driver-box">
+                    <span class="location">Package from Warsaw</span>
+                    <span class="order-id">Order ID #14398-91751</span>
+                </div>
+                <div class="status-of-user">
+                    <a href="#">on the way</a>
+                </div>
+                <span class="time">17:45 AM, Tuesday</span>
+            </div>
+
+            <div class="driver-user-BIG">
+                <div class="shot-info">
+                    <div class="driver-box">
+                        <span class="location">Package from Warsaw</span>
+                        <span class="order-id">Order ID #14398-91751</span>
+                    </div>
+                    <div class="status-of-user">
+                        <a href="#">on the way</a>
+                    </div>
+                    <span class="time">17:45 AM, Tuesday</span>
+                </div>
+                <div class="driver-detail-expanded">
+                    <div class="progress">
+                        <span class="prog-num">81%</span>
+                        <div class="progress-bar">
+                            <div class="progress-length" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="user-pro-detail">
+                        <div class="flex-in customer-name">Customer<span>Castorama</span></div>
+                        <div class="flex-in weight">Weight <span>2.8kg</span></div>
+                        <div class="flex-in price">Price <span>$480</span></div>
+                        <div class="flex-in departure">Departure <span>22 July</span></div>
+                    </div>
+                    <div class="user-info-2">
+                        <img alt="#" class="driver-pic" src="assets/image/hannah.jpg">
+                        <div class="driver_name-info">
+                            <p class="user-name">Adam Brady</p>
+                            <span>Driver</span>
+                        </div>
+                        <div class="user-contact">
+                            <a href="mailto:uuc110@gmail.com"><span
+                                    class="material-symbols-outlined chat">chat</span></a>
+                            <a href="tel:7775866495"><span class="material-symbols-outlined call">call</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tracking-card" style="z-index: 100;">
+        <div class="tracking-header">
+            <span class="order-id">Order ID #14398-91751</span>
+            <span class="status on-the-way">on the way</span>
+        </div>
+        <div class="tracking-details">
+            <div class="detail">
+                <span class="label">From</span>
+                <span class="value">Warsaw, PL</span>
+            </div>
+            <div class="detail">
+                <span class="label">To</span>
+                <span class="value">Berlin, DE</span>
+            </div>
+            <div class="detail">
+                <span class="label">Current Location</span>
+                <span class="value">Dresden, DE</span>
+            </div>
+            <div class="detail">
+                <span class="label">Kms Left</span>
+                <span class="value">620</span>
+            </div>
+            <div class="detail">
+                <span class="label">Last Stop</span>
+                <span class="value">3 hours</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="loc">
+    <h1 id="loc-paraID10"></h1>
+    <div id="map"></div>
+    <div id="route"></div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="MainComponentAnimation.js"></script>
+
+<!------------------------>
+<script src="/socket.io/socket.io.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIssu3rHGZAXQEDsekM0JzPrMqZv1mds8&callback=initMap"></script>
+<script type="text/javascript">
+    let socket = io();
+
+    let form = document.getElementById('form');
+    let myname = document.getElementById('myname');
+    let message = document.getElementById('message');
+    let messageArea = document.getElementById("messageArea");
+    let mycoords = document.getElementById('coords');
+
+
+    var variable7 = document.getElementById("loc-paraID1");
+    var variable8 = document.getElementById("loc-paraID2");
+    var variable9 = document.getElementById("loc-paraID3");
+    var variable10 = document.getElementById("loc-paraID10");
+    var variable11 = document.getElementById("loc-paraID11");
+    var variable13 = document.getElementById("loc-paraID13");
+    var variable14 = document.getElementById("loc-paraID14");
+    var variable15 = document.getElementById("loc-paraID15");
+    var variable16 = document.getElementById("loc-paraID16");
+    var variable17 = document.getElementById("btn");
+
+
+    //Ask new user for his/her name
+    const name = prompt("Enter your name to join");
+    const userType = prompt("Enter 1 for Driver 2 for Passenger");
+
+    var userTypeName1;
+    if (userType == 1) {
+        userTypeName1 = "Driver";
+    }
+    if (userType == 2) {
+        userTypeName1 = "Passenger";
+    }
+
+    function getlocation(callback) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (pos) {
+
+                const location = {
+                    latitude: pos.coords.latitude,
+                    longitude: pos.coords.longitude,
+                    accuracy: pos.coords.accuracy,
+                    timestamp: pos.timestamp,
+                    speed: pos.speed,
+                    heading: pos.coords.heading,
+                    altitude: pos.coords.altitude,
+                    name: name,
+                    userTypeName: userTypeName1,
+                };
+                const newLocation = {
+                    lat: pos.coords.latitude,
+                    lng: pos.coords.longitude,
+                    accuracy: pos.coords.accuracy,
+                    timestamp: pos.timestamp,
+                    speed: pos.speed,
+                    heading: pos.coords.heading,
+                    altitude: pos.coords.altitude,
+                    name: name,
+                    userTypeName: userTypeName1,
+                };
+                const locationArr = [newLocation];
+                // callback(location);
+                initMap(locationArr, newLocation, handleLocation2Data);
+                socket.emit('location', newLocation);
+
+            }, errHand);
+        }
+    }
+
+    // Define a sample callback function that uses the location data
+    function handleLocationData(pos) {
+        const myCoordinates = [{lat: pos.latitude, lng: pos.longitude, name: name}];
+        console.log(myCoordinates, "hii");
+        initMap(myCoordinates, (myCoordinates) => {
+
+            const map = new google.maps.Map(document.getElementById('map'), {
+                center: myCoordinates[0],
+                zoom: 14,
+            });
+            //   Add a marker for the user's location
+            const marktitle = myCoordinates[0].name + " " + userTypeName1;
+            const marker = new google.maps.Marker({
+                position: myCoordinates[0],
+                map: map,
+                title: marktitle,
+            })
+
+        });
+        console.log("handlelocation function has run");
+
+    }
+
+    // let the server know name of user
+    socket.emit('new-user-joined', name, userType);
+    var j = 0;
+
+    // Update the map with user locations
+    socket.on('updateLocations', (locationArr) => {
+        // Update your map here using userLocations
+        console.log('User locations:', locationArr);
+
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (pos) {
+
+                const location = {
+                    latitude: pos.coords.latitude,
+                    longitude: pos.coords.longitude,
+                    accuracy: pos.coords.accuracy,
+                    timestamp: pos.timestamp,
+                    speed: pos.speed,
+                    heading: pos.coords.heading,
+                    altitude: pos.coords.altitude,
+                    name: name,
+                    userTypeName: userTypeName1,
+                };
+                const newLocation = {
+                    lat: pos.coords.latitude,
+                    lng: pos.coords.longitude,
+                    accuracy: pos.coords.accuracy,
+                    timestamp: pos.timestamp,
+                    speed: pos.speed,
+                    heading: pos.coords.heading,
+                    altitude: pos.coords.altitude,
+                    name: name,
+                    userTypeName: userTypeName1,
+                };
+                // const locationArr = [newLocation];
+                // callback(location);
+
+                socket.on('new-driver-joined', (myCoords, name) => {
+                    console.log("coordinates of newlocation inside driver joined ", newLocation);
+                    console.log("driver joined ", name);
+                    initMap(locationArr, newLocation, handleLocation2Data);
+                });
+                socket.on('very-new-user-joined', (myCoords, name) => {
+                    console.log("you joined ", name);
+                    initMap(locationArr, newLocation, handleLocation2Data);
+                });
+
+            }, errHand);
+        }
+        j++;
+    });
+    getlocation(handleLocationData);
+
+    // Create a function to emit an event and return a promise
+    socket.on('user-joined', location => {
+        variable7.innerHTML = "Latitude: " +
+            location.lat;
+        variable8.innerHTML = "Longitude: " +
+            location.lng;
+        variable13.innerHTML = "Timestamp: " +
+            location.timestamp;
+        variable14.innerHTML = "Speed: " +
+            location.speed;
+        variable15.innerHTML = "Altitude: " +
+            location.altitude;
+        variable16.innerHTML = "Accuracy: " +
+            location.accuracy;
+        variable10.innerHTML =
+            location.name + " ki Location In Map";
+        variable11.innerHTML =
+            location.name + " ke Location Coordinates In Map";
+
+    })
+    function handleLocation2Data(locationArr, myCoords) {
+        // Do something with userCoordinates once they are available
+
+        const map = new google.maps.Map(document.getElementById('map'), {
+            center: myCoords,
+            zoom: 14,
+        });
+        console.log("myCoords above marker");
+        const title1 = myCoords.name + " " + myCoords.userTypeName;
+        const marker = new google.maps.Marker({
+            position: myCoords,
+            map: map,
+            title: title1,
+        })
+        marker.setIcon("http://maps.google.com/mapfiles/ms/icons/blue-dot.png");
+        // Create an info window
+        var infowindow = new google.maps.InfoWindow({
+            content: title1, // Add your content here
+        });
+
+        // Open the info window when the map loads
+        infowindow.open(map, marker);
+        //   Add a marker for the user's location
+        for (let i = 0; i < locationArr.length; i++) {
+            console.log("locationArr inside for loop");
+            const title1 = locationArr[i].name + " " + locationArr[i].userTypeName;
+            const marker = new google.maps.Marker({
+                position: locationArr[i],
+                map: map,
+                title: title1,
+            })
+            marker.setIcon("http://maps.google.com/mapfiles/ms/icons/green-dot.png");
+            // Create an info window
+            var infowindow = new google.maps.InfoWindow({
+                content: title1, // Add your content here
+            });
+
+            // Open the info window when the map loads
+            infowindow.open(map, marker);
+        }
+
+        // Add this code in your existing JavaScript code
+        const routeDiv = document.getElementById('route');
+        const calculateRouteButton = document.getElementById('btn');
+        let directionsService;
+        let directionsRenderer;
+
+        calculateRouteButton.addEventListener('click', () => {
+
+            if (myCoords && locationArr[0]) {
+                console.log("calculateRoute has clicekd");
+                directionsService = new google.maps.DirectionsService();
+                directionsRenderer = new google.maps.DirectionsRenderer({map});
+
+                const start = new google.maps.LatLng(myCoords.lat, myCoords.lng);
+                const end = new google.maps.LatLng(locationArr[0].lat, locationArr[0].lng);
+
+                const request = {
+                    origin: start,
+                    destination: end,
+                    travelMode: google.maps.TravelMode.DRIVING,
+                };
+
+                directionsService.route(request, (result, status) => {
+                    if (status === google.maps.DirectionsStatus.OK) {
+                        directionsRenderer.setDirections(result);
+                    } else {
+                        alert('Unable to get directions: ' + status);
+                    }
+                });
+            }
+        });
+    }
+    function initMap(locationArr, myCoordinates, callback) {
+        if (Array.isArray(locationArr) && locationArr.length > 0) {
+
+            callback(locationArr, myCoordinates);
+        } else {
+            console.error('locationArr is either not an array or is empty');
+        }
+    }
+    function errHand(err) {
+        switch (err.code) {
+            case err.PERMISSION_DENIED:
+                result.innerHTML =
+                    "The application doesn't have the permission" +
+                    "to make use of location services";
+                break;
+            case err.POSITION_UNAVAILABLE:
+                result.innerHTML =
+                    "The location of the device is uncertain";
+                break;
+            case err.TIMEOUT:
+                result.innerHTML =
+                    "The request to get user location timed out";
+                break;
+            case err.UNKNOWN_ERROR:
+                result.innerHTML =
+                    "Time to fetch location information exceeded" +
+                    "the maximum timeout interval";
+                break;
+        }
+    }
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (message.value) {
+            socket.emit('send name', myname.value);
+            socket.emit('send message', message.value);
+
+            message.value = "";
+        }
+    });
+
+    socket.on("send name", (username) => {
+        let name = document.createElement("p");
+        name.style.backgroundColor = "grey";
+        name.style.width = "100%";
+        name.style.textAlign = "center";
+        name.style.color = "white";
+        name.textContent = username + ":";
+        messageArea.appendChild(name);
+    });
+    socket.on("send message", (chat) => {
+        let chatContent = document.createElement("p");
+        chatContent.textContent = chat;
+        messageArea.appendChild(chatContent);
+    });
+</script>
+<!------------------------>
+</body>
+</html>

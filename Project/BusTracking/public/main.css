@@ -1,0 +1,173 @@
+@font-face {
+    font-family: "ZonaPro";
+    src: url(/public/assets/fonts/Zona/zona-pro-bold.otf);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "ZonaPro";
+    src: url(public/assets/fonts/Zona/zona-pro-light.otf);
+    font-weight: lighter;
+}
+
+@font-face {
+    font-family: "ZonaPro";
+    src: url(public/assets/fonts/Zona/zona-pro-medium.otf);
+    font-weight: medium;
+}
+
+@font-face {
+    font-family: "ZonaPro";
+    src: url(public/assets/fonts/Zona/zona-pro-regular.otf);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "ZonaPro";
+    src: url(assets/fonts/Zona/zona-pro-semibold.otf);
+    font-weight: semibold;
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    
+    --primary-red: #9a2020;
+    --primary-black: #141414;
+    --secondary-black: #1e1e1e;
+    --secondary-red: #d82216;
+    background-color: #e8eaed;
+}
+
+body {
+    font-family: "ZonaPro",Arial, sans-serif;
+    line-height: 1;
+    font-weight: 400;
+}
+
+.driver-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2.4rem;
+}
+
+.driver-user, .driver-user-BIG {
+    width: 90%;
+    height: 10rem;
+    background: #1e1e1e;
+    color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    padding: 2.4rem;
+    border-radius: 2.2rem;
+    gap: 1.2rem;
+    position: relative;
+    cursor: pointer;
+}
+
+.driver-user-BIG.expanded{
+    width: 90%;
+    height: auto;
+    background: rgb(120,24,24);
+    background: linear-gradient(90deg, rgba(120,24,24,1) 0%, rgba(149,30,30,1) 100%);
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2.4rem;
+    border-radius: 2.2rem;
+    gap: 1.2rem;
+    position: relative;
+    transition: height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.shot-info{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1.2rem;
+    &.order-id{
+        color: #f8f9fa;
+    }
+    transition: height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.driver-detail-expanded{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.driver-user-BIG .driver-detail-expanded {
+    display: none;
+}
+
+.driver-user-BIG.expanded .driver-detail-expanded {
+
+    display: block;
+}
+
+/*******************/
+
+
+/* .shot-info:not(.expanded) {
+    width: 100%;
+    height: 10rem;
+    background: #1e1e1e;
+    color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    padding: 2.4rem;
+    border-radius: 2.2rem;
+    gap: 7.3rem;
+    position: relative;
+} */
+
+.shot-info.expanded {
+    width: 100%;
+    color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 2.2rem;
+}
+
+.shot-info.expanded .status-of-user a{
+    color: black;
+    background-color: white;
+}
+
+.driver-user-BIG.expanded .time{
+    position: absolute;
+    bottom: 1rem;
+    right: 2.4rem;
+    max-height: 1000px;
+}
+
+.panel {
+    display: none;
+    overflow: hidden;
+    width: 35rem;
+    z-index: 100;
+}
+
+.panel.is-expanded {
+    display: contents;
+}
+
+
+
+
+
+
+
+
+
+
